@@ -79,9 +79,25 @@
   .card table{margin:4px 0 10px}
   .flow{
     background:#f3ece0;border:1px solid var(--line);border-radius:10px;
-    padding:14px 16px;margin:0 0 10px;font-weight:700;line-height:2.1;
+    padding:16px 18px;margin:0 0 10px;
   }
-  .flow span{white-space:nowrap}
+  .flow span{display:block;font-weight:700;line-height:1.6}
+  .flow span:not(:first-child)::before{
+    content:"↓";display:block;font-weight:400;color:var(--warm);
+    line-height:1.4;margin:2px 0;
+  }
+
+  /* 画面の下に出しておく電話ボタン */
+  .callbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:var(--accent);color:var(--accent-ink);text-decoration:none;
+    padding:11px 20px 13px;text-align:center;
+    box-shadow:0 -2px 14px rgba(0,0,0,.20);
+    transform:translateY(105%);transition:transform .25s ease;
+  }
+  .callbar.show{transform:translateY(0)}
+  .callbar strong{display:block;font-size:21px;font-weight:700;letter-spacing:.04em}
+  .callbar span{display:block;font-size:12px;opacity:.9;margin-top:1px}
 
   table{width:100%;border-collapse:collapse;background:var(--card);font-size:16px}
   th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
@@ -107,7 +123,16 @@
   .shoplink strong{display:block;font-size:17px;color:var(--accent)}
   .shoplink span{font-size:14px;color:var(--ink-soft)}
 
-  footer{padding:28px 0 40px;text-align:center;font-size:13px;color:var(--ink-soft)}
+  footer{padding:28px 0 110px;text-align:center;font-size:13px;color:var(--ink-soft)}
+
+  /* 羽毛の料金表：1列目を広げて折り返しを減らす（以降の指定に負けないよう末尾に置く） */
+  .price-futon{table-layout:fixed}
+  .price-futon th:first-child{width:44%}
+  .price-futon .grade{display:block;font-weight:400;font-size:13px;color:var(--ink-soft);margin-top:1px}
+  @media (max-width:430px){
+    table{font-size:15px}
+    th,td{padding:8px 9px}
+  }
 </style>
 </head>
 <body>
@@ -148,16 +173,16 @@
       </ul>
 
       <h4>お渡しまでの流れ</h4>
-      <p class="flow"><span>お電話・ご来店</span> → <span>お見積り</span> → <span>お預かり</span> → <span>お仕立て直し（約10日）</span> → <span>お渡し・お支払い</span></p>
+      <p class="flow"><span>お電話・ご来店</span><span>お見積り</span><span>お預かり</span><span>お仕立て直し（約10日）</span><span>お渡し・お支払い</span></p>
       <p class="note">お取りに伺う場合は、引き取りの際にお見積りをして、仕上がりをお届けします。</p>
 
       <h4>料金</h4>
-      <table>
+      <table class="price-futon">
         <tr><th>側生地</th><th>シングル</th><th>ダブル</th></tr>
-        <tr><th>綿100%・80番（上質）</th><td class="price">25,000円</td><td class="price">37,000円</td></tr>
-        <tr><th>綿100%・60番（おすすめ）</th><td class="price">22,000円</td><td class="price">33,000円</td></tr>
-        <tr><th>テトロン（お手軽）</th><td class="price">19,000円</td><td class="price">28,000円</td></tr>
-        <tr><th>足し羽毛（200gを超えた分）</th><td class="price" colspan="2">100gあたり 3,000円</td></tr>
+        <tr><th>綿100%・80番<span class="grade">上質</span></th><td class="price">25,000円</td><td class="price">37,000円</td></tr>
+        <tr><th>綿100%・60番<span class="grade">おすすめ</span></th><td class="price">22,000円</td><td class="price">33,000円</td></tr>
+        <tr><th>テトロン<span class="grade">お手軽</span></th><td class="price">19,000円</td><td class="price">28,000円</td></tr>
+        <tr><th>足し羽毛<span class="grade">200gを超えた分</span></th><td class="price" colspan="2">100gあたり 3,000円</td></tr>
       </table>
       <p class="note">価格はすべて税込です。生地や状態によって変わりますので、正確な金額はお持ちいただいてからお見積りします。<br>テトロンはポリエステルの生地のことです。軽くて丈夫で、お値段は一番お手頃です。ただ、夏は少し暑く感じ、においが出ることがあります。綿の生地は汗を吸いますので、一年中お使いになるなら綿100%の60番をおすすめしています。</p>
 
@@ -262,6 +287,23 @@
 <footer>
   <div class="wrap">小俣通商</div>
 </footer>
+
+<a class="callbar" href="tel:0554451356">
+  <strong>0554-45-1356</strong>
+  <span>お見積りは無料です。お気軽にお電話ください</span>
+</a>
+
+<script>
+(function(){
+  var bar = document.querySelector('.callbar');
+  var top = document.querySelector('.callbtn');
+  if (!bar) return;
+  if (!top || !('IntersectionObserver' in window)) { bar.classList.add('show'); return; }
+  new IntersectionObserver(function(entries){
+    bar.classList.toggle('show', !entries[0].isIntersecting);
+  }, {threshold: 0}).observe(top);
+})();
+</script>
 
 </body>
 </html>
