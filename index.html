@@ -42,8 +42,16 @@
     font-size:30px;font-weight:700;letter-spacing:.08em;margin:0 0 6px;
   }
   .tagline{
-    font-size:15px;color:var(--ink-soft);margin:0 0 4px;
+    font-size:19px;font-weight:700;color:var(--ink);margin:0 0 6px;letter-spacing:.02em;
   }
+  .quickinfo{
+    margin:10px 0 0;padding:12px 14px;text-align:center;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    font-size:14px;line-height:1.8;color:var(--ink);
+  }
+  .quickinfo b{font-weight:700}
+  .quickinfo span{white-space:nowrap}
+  .quickinfo .tax{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px}
   .place{font-size:14px;color:var(--ink-soft);margin:0 0 24px}
   .callbtn{
     display:block;
@@ -55,7 +63,7 @@
     box-shadow:0 2px 0 rgba(0,0,0,.12);
   }
   .callbtn small{display:block;font-size:13px;font-weight:400;opacity:.85;letter-spacing:.02em;margin-top:2px}
-  .mailbtn{display:block;margin-top:10px;background:var(--card);color:var(--accent);border:2px solid var(--accent);text-decoration:none;border-radius:12px;padding:12px 20px;font-size:17px;font-weight:700;text-align:center}
+  .mailbtn,.mapbtn{display:block;margin-top:10px;background:var(--card);color:var(--accent);border:2px solid var(--accent);text-decoration:none;border-radius:12px;padding:12px 20px;font-size:17px;font-weight:700;text-align:center}
 
   /* ---- sections ---- */
   section{padding:38px 0;border-bottom:1px solid var(--line)}
@@ -74,14 +82,24 @@
     background:var(--card);border:1px solid var(--line);border-radius:12px;
     padding:20px;margin-bottom:20px;
   }
+  .card h3{
+    font-size:22px;margin:-20px -20px 18px;padding:14px 20px;
+    background:var(--accent);color:var(--accent-ink);
+    border-radius:11px 11px 0 0;letter-spacing:.06em;
+  }
   .card ul{margin:10px 0 14px;padding-left:1.2em}
   .card li{margin-bottom:4px}
   .card table{margin:4px 0 10px}
   .flow{
     background:#f3ece0;border:1px solid var(--line);border-radius:10px;
-    padding:14px 16px;margin:0 0 10px;font-weight:700;line-height:2.1;
+    padding:16px 18px;margin:0 0 10px;
   }
-  .flow span{white-space:nowrap}
+  .flow span{display:block;font-weight:700;line-height:1.6}
+  .flow span:not(:first-child)::before{
+    content:"↓";display:block;font-weight:400;color:var(--warm);
+    line-height:1.4;margin:2px 0;
+  }
+
 
   table{width:100%;border-collapse:collapse;background:var(--card);font-size:16px}
   th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
@@ -108,6 +126,15 @@
   .shoplink span{font-size:14px;color:var(--ink-soft)}
 
   footer{padding:28px 0 40px;text-align:center;font-size:13px;color:var(--ink-soft)}
+
+  /* 羽毛の料金表：1列目を広げて折り返しを減らす（以降の指定に負けないよう末尾に置く） */
+  .price-futon{table-layout:fixed}
+  .price-futon th:first-child{width:44%}
+  .price-futon .grade{display:block;font-weight:400;font-size:13px;color:var(--ink-soft);margin-top:1px}
+  @media (max-width:430px){
+    table{font-size:15px}
+    th,td{padding:8px 9px}
+  }
 </style>
 </head>
 <body>
@@ -122,7 +149,13 @@
       0554-45-1356
       <small>お見積りは無料です。お気軽にお電話ください</small>
     </a>
-    <a class="mailbtn" href="mailto:okfka240n@gmail.com">✉ メールでお問い合わせ</a>
+    <p class="quickinfo">
+      <span>月〜金 9:00〜18:00</span>／<span>土 9:00〜12:00</span>・<span>日曜定休</span><br>
+      <span>羽毛布団のリフォーム <b>19,000円〜</b></span>／<span>洋服のお直し <b>300円〜</b></span><br>
+      <span>羽毛布団は<b>お取りに伺います</b></span><span>（都留市は無料）</span>
+      <span class="tax">価格はすべて税込です</span>
+    </p>
+    <a class="mailbtn" href="mailto:okfka240n@gmail.com" style="margin-top:12px">✉ メールでお問い合わせ</a>
     <p class="note" style="margin:12px 0 0">分からないことは、お電話でお気軽にどうぞ。営業時間外は、メールでもお問い合わせいただけます。</p>
   </div>
 </header>
@@ -148,16 +181,16 @@
       </ul>
 
       <h4>お渡しまでの流れ</h4>
-      <p class="flow"><span>お電話・ご来店</span> → <span>お見積り</span> → <span>お預かり</span> → <span>お仕立て直し（約10日）</span> → <span>お渡し・お支払い</span></p>
+      <p class="flow"><span>お電話・ご来店</span><span>お見積り</span><span>お預かり</span><span>お仕立て直し（約10日）</span><span>お渡し・お支払い</span></p>
       <p class="note">お取りに伺う場合は、引き取りの際にお見積りをして、仕上がりをお届けします。</p>
 
       <h4>料金</h4>
-      <table>
+      <table class="price-futon">
         <tr><th>側生地</th><th>シングル</th><th>ダブル</th></tr>
-        <tr><th>綿100%・80番（上質）</th><td class="price">25,000円</td><td class="price">37,000円</td></tr>
-        <tr><th>綿100%・60番（おすすめ）</th><td class="price">22,000円</td><td class="price">33,000円</td></tr>
-        <tr><th>テトロン（お手軽）</th><td class="price">19,000円</td><td class="price">28,000円</td></tr>
-        <tr><th>足し羽毛（200gを超えた分）</th><td class="price" colspan="2">100gあたり 3,000円</td></tr>
+        <tr><th>綿100%・80番<span class="grade">上質</span></th><td class="price">25,000円</td><td class="price">37,000円</td></tr>
+        <tr><th>綿100%・60番<span class="grade">おすすめ</span></th><td class="price">22,000円</td><td class="price">33,000円</td></tr>
+        <tr><th>テトロン<span class="grade">お手軽</span></th><td class="price">19,000円</td><td class="price">28,000円</td></tr>
+        <tr><th>足し羽毛<span class="grade">200gを超えた分</span></th><td class="price" colspan="2">100gあたり 3,000円</td></tr>
       </table>
       <p class="note">価格はすべて税込です。生地や状態によって変わりますので、正確な金額はお持ちいただいてからお見積りします。<br>テトロンはポリエステルの生地のことです。軽くて丈夫で、お値段は一番お手頃です。ただ、夏は少し暑く感じ、においが出ることがあります。綿の生地は汗を吸いますので、一年中お使いになるなら綿100%の60番をおすすめしています。</p>
 
@@ -205,8 +238,13 @@
         <tr><th>ジーンズ穴補修（1か所）</th><td class="price">1,000円</td></tr>
         <tr><th>バッグ修理</th><td>破損箇所により異なります（店頭でご確認ください）</td></tr>
       </table>
-      <p class="note">生地や状態によって変わります。正確な金額はお持ちいただいてからお見積りします。</p>
+      <p class="note">価格はすべて税込です。生地や状態によって変わりますので、正確な金額はお持ちいただいてからお見積りします。</p>
     </div>
+
+    <a class="callbtn" href="tel:0554451356" style="margin-top:8px">
+      0554-45-1356
+      <small>お見積りは無料です。お気軽にお電話ください</small>
+    </a>
   </div>
 </section>
 
@@ -214,7 +252,7 @@
   <div class="wrap">
     <h2>よくあるご質問</h2>
     <dl class="faq">
-      <dt>どのくらい日数がかかりますか？</dt>
+      <dt>洋服のお直しはどのくらいかかりますか？</dt>
       <dd>お直しの内容や混み具合によって日数が変わるため、ご持ち込みの際にお伝えします。</dd>
 
       <dt>予約は必要ですか？</dt>
@@ -253,9 +291,12 @@
       <tr><th>定休日</th><td>日曜日</td></tr>
       <tr><th>駐車場</th><td>あり（基本2台）</td></tr>
     </table>
-    <p style="margin-top:16px">
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B0%8F%E4%BF%A3%E9%80%9A%E5%95%86%20%E5%B1%B1%E6%A2%A8%E7%9C%8C%E9%83%BD%E7%95%99%E5%B8%82%E3%81%A4%E3%82%8B3-11-11">Googleマップで場所を見る →</a>
-    </p>
+    <img class="photo" src="map-location.svg" style="margin-top:20px"
+         alt="富士山の北東にある都留市の位置を示した図。小俣通商は都留市にあり、まわりに富士吉田市・大月市・上野原市があります。">
+    <p class="note" style="margin-top:-6px;text-align:center">お店は富士山の北東、都留市にあります。</p>
+
+    <a class="mapbtn" style="margin-top:18px" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B0%8F%E4%BF%A3%E9%80%9A%E5%95%86%20%E5%B1%B1%E6%A2%A8%E7%9C%8C%E9%83%BD%E7%95%99%E5%B8%82%E3%81%A4%E3%82%8B3-11-11">📍 Googleマップで道順を見る</a>
   </div>
 </section>
 
