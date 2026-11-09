@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img"
+     aria-label="富士山の北東にある都留市の位置を示した図。小俣通商は都留市にあります。富士吉田市、大月市、上野原市が近くにあります。">
+  <rect width="600" height="420" rx="12" fill="#eef1ec"/>
+
+  <!-- 中央自動車道 -->
+  <polyline points="20,170 200,152 391,123 580,99" fill="none" stroke="#c2ac90" stroke-width="8" stroke-linecap="round"/>
+  <text x="150" y="143" font-size="19" fill="#8a7558" transform="rotate(-6.5 150 143)">中央自動車道</text>
+
+  <!-- 富士急行線 -->
+  <polyline points="391,123 364,181 273,239" fill="none" stroke="#a7b7c3" stroke-width="4"
+            stroke-dasharray="10 8" stroke-linecap="round"/>
+  <text x="300" y="166" font-size="19" text-anchor="end" fill="#6d7c87">富士急行線</text>
+
+  <!-- 河口湖 -->
+  <ellipse cx="222" cy="212" rx="31" ry="15" fill="#9ec6dd"/>
+  <text x="222" y="195" font-size="20" text-anchor="middle" fill="#4a6a7d">河口湖</text>
+
+  <!-- 富士山 -->
+  <polygon points="108,392 198,290 288,392" fill="#c3ced7"/>
+  <polygon points="174,318 198,290 222,318" fill="#ffffff"/>
+  <text x="198" y="378" font-size="27" text-anchor="middle" font-weight="700" fill="#3f4d57">富士山</text>
+
+  <!-- まわりの市 -->
+  <circle cx="273" cy="239" r="7" fill="#5c5248"/>
+  <text x="259" y="267" font-size="23" text-anchor="end" fill="#3b352e">富士吉田市</text>
+  <circle cx="391" cy="123" r="7" fill="#5c5248"/>
+  <text x="404" y="116" font-size="23" fill="#3b352e">大月市</text>
+  <circle cx="546" cy="104" r="7" fill="#5c5248"/>
+  <text x="560" y="138" font-size="23" text-anchor="end" fill="#3b352e">上野原市</text>
+
+  <!-- 都留市（お店） -->
+  <circle cx="364" cy="181" r="26" fill="none" stroke="#1c4f6b" stroke-width="3" opacity=".40"/>
+  <circle cx="364" cy="181" r="15" fill="#1c4f6b"/>
+  <text x="396" y="176" font-size="29" font-weight="700" fill="#1c4f6b">都留市</text>
+  <text x="396" y="205" font-size="21" fill="#5c5248">小俣通商</text>
+
+  <!-- ものさし（10km） -->
+  <line x1="420" y1="372" x2="520" y2="372" stroke="#6b6358" stroke-width="3"/>
+  <line x1="420" y1="365" x2="420" y2="379" stroke="#6b6358" stroke-width="3"/>
+  <line x1="520" y1="365" x2="520" y2="379" stroke="#6b6358" stroke-width="3"/>
+  <text x="470" y="397" font-size="19" text-anchor="middle" fill="#6b6358">10km</text>
+</svg>
