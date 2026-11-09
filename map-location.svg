@@ -32,7 +32,7 @@
   <circle cx="364" cy="181" r="26" fill="none" stroke="#1c4f6b" stroke-width="3" opacity=".40"/>
   <circle cx="364" cy="181" r="15" fill="#1c4f6b"/>
   <text x="396" y="176" font-size="29" font-weight="700" fill="#1c4f6b">都留市</text>
-  <text x="396" y="205" font-size="21" fill="#5c5248">小俣通商</text>
+  <text x="396" y="207" font-size="25" font-weight="700" fill="#1c4f6b">ここ</text>
 
   <!-- ものさし（10km） -->
   <line x1="420" y1="372" x2="520" y2="372" stroke="#6b6358" stroke-width="3"/>
